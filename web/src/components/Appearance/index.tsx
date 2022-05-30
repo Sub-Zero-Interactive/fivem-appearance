@@ -14,6 +14,7 @@ import {
   PedHeadOverlayValue,
   PedHair,
   CameraState,
+  TattooSettings,
 } from './interfaces';
 
 import {
@@ -27,6 +28,7 @@ import Ped from './Ped';
 import HeadBlend from './HeadBlend';
 import FaceFeatures from './FaceFeatures';
 import HeadOverlays from './HeadOverlays';
+import TattooData from './tattoos';
 import Components from './Components';
 import Props from './Props';
 import Options from './Options';
@@ -172,6 +174,21 @@ const Appearance = () => {
       setData(_data);
     },
     [setData, setAppearanceSettings],
+  );
+
+  const handleTattooChange = useCallback(
+    (key: keyof TattooSettings, value: string) => {
+      if (!data) return;
+
+      const updatedTattoo = { ...data.tattoo, [key]: value };
+
+      const updatedData = { ...data, tattoo: updatedTattoo };
+
+      setData(updatedData);
+
+      Nui.post('appearance_change_tattoo', updatedTattoo);
+    },
+    [data, setData],
   );
 
   const handleHeadBlendChange = useCallback(
@@ -484,6 +501,14 @@ const Appearance = () => {
                       storedData={storedData.props}
                       handlePropDrawableChange={handlePropDrawableChange}
                       handlePropTextureChange={handlePropTextureChange}
+                    />
+                  )}
+                  {config.tattoos && (
+                    <TattooData
+                      settings={appearanceSettings.tattoos}
+                      data={data.tattoos}
+                      storedData={storedData.tattoos}
+                      handleTattooChange={handleTattooChange}
                     />
                   )}
                 </Container>

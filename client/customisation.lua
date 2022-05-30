@@ -169,6 +169,8 @@ local function getAppearanceSettings()
 		max = 30
 	}
 
+	local Tattoos = constants.TATTOOS
+
 	return {
 		ped = ped,
 		components = components,
@@ -178,6 +180,7 @@ local function getAppearanceSettings()
 		headOverlays = headOverlays,
 		hair = hair,
 		eyeColor = eyeColor,
+		tattoos = Tattoos
 	}
 end
 client.getAppearanceSettings = getAppearanceSettings

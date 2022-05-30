@@ -86,6 +86,18 @@ export interface PedSettings {
   };
 }
 
+export interface tattoos {
+  head: string[];
+  Larm: string[];
+  Lleg: string[];
+  Rarm: string[];
+  Rleg: string[];
+  torso: string[];
+  model: {
+    items: string[];
+  };
+}
+
 export interface ComponentSettings {
   component_id: number;
   drawable: {
@@ -192,6 +204,11 @@ export interface AppearanceSettings {
   hair: HairSettings;
   eyeColor: EyeColorSettings;
 }
+
+export interface TattooSettings {
+  tattoos: tattoos;
+}
+
 
 export interface CustomizationConfig {
   ped: boolean;

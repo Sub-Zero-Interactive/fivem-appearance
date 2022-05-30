@@ -31,7 +31,8 @@ server_scripts {
 files {
 	'web/build/index.html',
 	'web/build/static/js/*.js',
-	'locales/*.json'
+	'locales/*.json',
+	'tattoos.json',
 }
 
 ui_page 'web/build/index.html'
